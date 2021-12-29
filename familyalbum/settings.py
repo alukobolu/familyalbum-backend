@@ -35,7 +35,7 @@ else:
     DEBUG = False
 
 # SECURITY WARNING: don't run with debug turned on in productio
-ALLOWED_HOSTS = ['192.168.43.164','127.0.0.1','192.168.137.209']
+ALLOWED_HOSTS = ['192.168.43.164','127.0.0.1','192.168.137.209','alukofamilyalbum.herokuapp.com']
 
 #User model
 AUTH_USER_MODEL = 'accounts.Account'
