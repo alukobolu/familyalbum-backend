@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Account,SocialLogin,WaitList
+from .models import Account,SocialLogin,WaitList,Feedback
 
 # Register your models here.
 
@@ -21,6 +21,15 @@ class WaitListAdmin(admin.ModelAdmin):
 	fieldsets =()
 
 
+class FeedbackAdmin(admin.ModelAdmin):
+	list_display = ('email','name', 'message',)
+	search_feilds = ('email','name' )
+	filter_horizontal = ()
+	list_filter = ('email','name',)
+	fieldsets =()
+
+
 admin.site.register(Account, AccountAdmin)	
 admin.site.register(SocialLogin)	
 admin.site.register(WaitList,WaitListAdmin)
+admin.site.register(Feedback,FeedbackAdmin)
