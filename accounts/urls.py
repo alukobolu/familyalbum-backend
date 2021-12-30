@@ -19,6 +19,7 @@ urlpatterns = [
     path('check_user/<user>', views.check_user.as_view(), name='check_user'),
 
     path('wait', views.WaitLists.as_view(), name='wait'),
+    path('feedback', views.Feedbacks.as_view(), name='feedback'),
 
 
 

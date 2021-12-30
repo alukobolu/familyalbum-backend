@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 from . import serializers
-from .models import Account,SocialLogin,WaitList
+from .models import Account,SocialLogin,WaitList,Feedback
 
 #For authentication
 from django.contrib.auth import authenticate,logout
@@ -23,7 +23,7 @@ from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_text
 from .tokens import account_activation_token
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, message
 from django.conf import settings
 from .tasks import celery_verify_email
 
@@ -307,4 +307,21 @@ class WaitLists(APIView):
         except:
             data ={}
             data['result'] = "email exist"
+            return Response(data=data)
+
+class Feedbacks(APIView):
+    data = {}
+    
+    def post(self, request):
+        try:
+            email = request.POST['email']
+            message =request.POST['message']
+            name = request.POST['name']
+            Feedback.objects.create(email=email,name=name,message=message)
+            data ={}
+            data['result'] = "Successfully sent feedback"
+            return Response(data=data)
+        except:
+            data ={}
+            data['result'] = "An error occured"
             return Response(data=data)

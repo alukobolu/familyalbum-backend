@@ -1,3 +1,4 @@
+from django.core.mail import message
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 import uuid 
@@ -106,6 +107,15 @@ class   WaitList(models.Model):
     email       =       models.EmailField(verbose_name="wait_email",  max_length=60, unique=True)
     time        =       models.DateTimeField(auto_now_add=True,null=True)
     joined      =       models.BooleanField(default=False)
+    
+
+    def __str__(self):
+        return  str(self.email) 
+
+class   Feedback(models.Model):
+    email       =       models.EmailField(verbose_name="wait_email",  max_length=60, unique=False)
+    name        =       models.CharField(max_length=60,null=True)
+    message     =       models.CharField(max_length=6000,null=True)
     
 
     def __str__(self):
