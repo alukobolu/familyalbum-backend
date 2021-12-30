@@ -22,10 +22,10 @@ class WaitListAdmin(admin.ModelAdmin):
 
 
 class FeedbackAdmin(admin.ModelAdmin):
-	list_display = ('email','name', 'message',)
+	list_display = ('email','name', 'message','time',)
 	search_feilds = ('email','name' )
 	filter_horizontal = ()
-	list_filter = ('email','name',)
+	list_filter = ('email','name','time',)
 	fieldsets =()
 
 

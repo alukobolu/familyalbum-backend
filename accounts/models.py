@@ -116,7 +116,7 @@ class   Feedback(models.Model):
     email       =       models.EmailField(verbose_name="wait_email",  max_length=60, unique=False)
     name        =       models.CharField(max_length=60,null=True)
     message     =       models.CharField(max_length=6000,null=True)
-    
+    time        =       models.DateTimeField(auto_now_add=True,null=True)
 
     def __str__(self):
         return  str(self.email) 
